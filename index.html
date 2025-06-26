@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganta Kalyan - Engineering & IT Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN for modern icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Lighter background */
+            color: #334155; /* Slate-700 */
+        }
+        .container {
+            max-width: 1024px; /* Slightly wider container */
+            padding: 2rem; /* Consistent padding around the main content */
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+            color: #1e293b; /* Slate-900 */
+            font-weight: 700; /* Bold */
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 70px; /* Wider underline */
+            height: 5px; /* Thicker underline */
+            background-color: #6366f1; /* Indigo-500 */
+            border-radius: 9999px;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem; /* More rounded corners */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Stronger shadow */
+            padding: 2rem; /* Increased padding inside cards */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+        }
+        .card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* More pronounced shadow */
+        }
+        .icon-link {
+            display: inline-flex;
+            align-items: center;
+            color: #4f46e5; /* Indigo-600 */
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .icon-link:hover {
+            color: #3730a3; /* Indigo-800 */
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%; /* Circular image */
+            border: 4px solid #6366f1; /* Indigo-500 border */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .gallery-image {
+            width: 100%;
+            height: 200px; /* Fixed height for gallery images */
+            object-fit: cover;
+            border-radius: 0.75rem; /* Rounded corners for gallery images */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-image:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-info {
+                text-align: center;
+                margin-top: 1rem;
+            }
+            .header-info .flex {
+                justify-content: center;
+            }
+            /* Stack grid columns on small screens */
+            .grid-cols-2-md, .grid-cols-3-lg {
+                grid-template-columns: 1fr !important;
+            }
+            .list-disc {
+                margin-left: 1rem !important; /* Adjust list indentation for smaller screens */
+            }
+        }
+        .gemini-btn {
+            background-color: #10b981; /* Emerald-500 */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+        .gemini-btn:hover {
+            background-color: #059669; /* Emerald-600 */
+        }
+        .insight-box {
+            background-color: #ecfdf5; /* Emerald-50 */
+            border-left: 4px solid #10b981; /* Emerald-500 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            color: #065f46; /* Emerald-900 */
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #10b981;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 0.5rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="antialiased leading-relaxed">
+    <div class="container mx-auto p-4 md:p-8">
+        <!-- Header Section -->
+        <header class="card p-6 mb-8 flex flex-col md:flex-row items-center justify-between header-content">
+            <div class="flex flex-col md:flex-row items-center text-center md:text-left mb-4 md:mb-0">
+                <!-- Profile Image -->
+                <!-- Removed standalone profile image here as per user request -->
+                <div>
+                    <h1 class="text-5xl font-extrabold text-gray-900">GANTA KALYAN</h1>
+                    <p class="text-2xl text-gray-600">Structural Engineer & Aspiring IT Professional</p>
+                </div>
+            </div>
+            <div class="text-center md:text-right space-y-2 header-info">
+                <p class="text-gray-700 flex items-center justify-center md:justify-end">
+                    <span data-lucide="phone" class="w-5 h-5 mr-2 text-indigo-500"></span> +91 7013542919
+                </p>
+                <p class="text-gray-700 flex items-center justify-center md:justify-end">
+                    <span data-lucide="mail" class="w-5 h-5 mr-2 text-indigo-500"></span> gantakalyan396@gmail.com
+                </p>
+                <div class="flex justify-center md:justify-end space-x-4 mt-2">
+                    <a href="https://linkedin.com/in/ganta-kalyan" target="_blank" class="icon-link">
+                        <span data-lucide="linkedin" class="w-6 h-6 mr-1"></span> LinkedIn
+                    </a>
+                    <a href="https://github.com/GantaKalyan" target="_blank" class="icon-link">
+                        <span data-lucide="github" class="w-6 h-6 mr-1"></span> GitHub
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="space-y-8">
+            <!-- Career Objective -->
+            <section class="card">
+                <h2 class="text-3xl font-bold section-title">Career Objective</h2>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    A highly motivated Structural Engineering graduate (M.Tech completion 2025) with strong expertise in structural analysis, design, and software tools like STAAD.Pro, Revit, and AutoCAD. Possessing hands-on project and internship experience in reinforced concrete and steel structure design, I am eager to leverage a unique blend of analytical and technical skills in both traditional engineering and a transitioning role within the IT industry. Proficient in Python, SQL, and data analysis, I am passionate about contributing to innovative and sustainable infrastructure projects, while also excelling in data analytics and software development roles.
+                </p>
+            </section>
+
+            <!-- Education -->
+            <section class="card">
+                <h2 class="text-3xl font-bold section-title">Education</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Master of Technology (M.Tech) in Structural Engineering</h3>
+                        <p class="text-gray-600">University College of Engineering, Kakinada (JNTUK) | 2023 – 2025 | CGPA: 9.07</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Bachelor of Technology (B.Tech) in Civil Engineering</h3>
+                        <p class="text-gray-600">BVC Engineering College, Odalarevu | 2018 – 2022 | CGPA: 9.30</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Higher Secondary Education (11-12)</h3>
+                        <p class="text-gray-600">Sri Nanna Raju Junior College, Ravulapalem | 2016 – 2018 | Percentage: 94.7%</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Secondary Education</h3>
+                        <p class="text-gray-600">Z P P Boys High School, Ravulapalem | 2015 - 2016 | CGPA: 8.8</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Internships -->
+            <section class="card">
+                <h2 class="text-3xl font-bold section-title">Internship Experience</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Civil Engineering Intern | Sri Maruthi Constructions</h3>
+                        <p class="text-gray-600">May 2024 – June 2024</p>
+                        <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1">
+                            <li>Conducted regular site inspections to ensure quality and adherence to project specifications.</li>
+                            <li>Performed quantity surveying and assisted in project documentation.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Python Development Intern | CodeClause</h3>
+                        <p class="text-gray-600">2023</p>
+                        <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1">
+                            <li>Designed and developed Python-based scripts for data processing.</li>
+                            <li>Enhanced code efficiency and performed debugging to improve functionality.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Virtual Internship in Data Analytics Consulting | KPMG</h3>
+                        <p class="text-gray-600">2023</p>
+                        <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1">
+                            <li>Conducted data cleaning, analysis, and visualization for client projects.</li>
+                            <li>Delivered insights to improve decision-making and business outcomes.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Subject Matter Expert - Civil Engineering | Wikasta Business & Technical Solutions Pvt. Ltd.</h3>
+                        <p class="text-gray-600">Feb 2023 – Mar 2023</p>
+                        <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1">
+                            <li>Provided technical expertise and content creation support on civil engineering topics.</li>
+                            <li>Reported bugs, provided feedback, and contributed to improving platform quality and user experience.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section class="card">
+                <h2 class="text-3xl font-bold section-title">Key Projects</h2>
+                <div class="space-y-6">
+                    <!-- Project 1 -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900" id="project1-title">Analysis and Design of G+5 Commercial Building for Lateral Loads Using STAAD.Pro</h3>
+                        <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1" id="project1-desc">
+                            <li>Conducted seismic and wind load analysis on a G+5 commercial structure.</li>
+                            <li>Designed structural components to meet safety and performance standards.</li>
+                        </ul>
+                        <button class="gemini-btn" onclick="generateProjectInsight(this, 'project1')">
+                            ✨ Generate Insights
+                            <span id="project1-spinner" class="loading-spinner hidden"></span>
+                        </button>
+                        <div id="project1-insight" class="insight-box hidden"></div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900" id="project2-title">Data Analysis with SQL and Excel</h3>
+                        <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1" id="project2-desc">
+                            <li>Cleaned and analyzed datasets using SQL queries and Excel tools.</li>
+                            <li>Created pivot tables, charts, and dashboards to visualize insights.</li>
+                        </ul>
+                        <button class="gemini-btn" onclick="generateProjectInsight(this, 'project2')">
+                            ✨ Generate Insights
+                            <span id="project2-spinner" class="loading-spinner hidden"></span>
+                        </button>
+                        <div id="project2-insight" class="insight-box hidden"></div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900" id="project3-title">Soil Stabilization Using Plastic Waste and Design of a Flexible Pavement</h3>
+                        <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1" id="project3-desc">
+                            <li>Increased the bearing capacity of subgrade soil by using waste plastic bottles.</li>
+                            <li>Designed pavement composition based on IRC: 37 guidelines.</li>
+                        </ul>
+                        <button class="gemini-btn" onclick="generateProjectInsight(this, 'project3')">
+                            ✨ Generate Insights
+                            <span id="project3-spinner" class="loading-spinner hidden"></span>
+                        </button>
+                        <div id="project3-insight" class="insight-box hidden"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills, Certifications, Achievements -->
+            <section class="card">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h2 class="text-3xl font-bold section-title">Skills</h2>
+                        <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1 text-lg">
+                            <li><strong>Software:</strong> STAAD.Pro, ETabs, AutoCAD, Revit Architecture, MS Office</li>
+                            <li><strong>Programming Languages:</strong> Python, C Programming, Java</li>
+                            <li><strong>Database:</strong> MySQL, Google Cloud</li>
+                            <li><strong>Data Analysis:</strong> Excel, Data Visualization</li>
+                            <li><strong>Specializations:</strong> Structural Analysis, 3D Modeling, Reinforced Concrete Design</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold section-title">Certifications</h2>
+                        <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1 text-lg">
+                            <li>Master Data Analytics with SQL and Excel | Great Learning, 2023</li>
+                            <li>Python Programming | GUVI, 2023</li>
+                            <li>SQL for Data Science | Coursera, 2022</li>
+                            <li>Java Programming | Great Learning, 2022</li>
+                            <li>AutoCAD 2020 2D Basics & Advanced | Udemy, Apr 2023</li>
+                            <li>STAAD.Pro | APSSDC, May 2022</li>
+                            <li>Revit Architecture | APSSDC, May 2020</li>
+                            <li>NPTEL: Geotechnical Engineering - I | IIT Bombay, 2020</li>
+                            <li>NPTEL: Concrete Technology | IIT Madras, 2019</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="card">
+                <h2 class="text-3xl font-bold section-title">My Moments</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Image 2 -->
+                    <div class="relative group">
+                        <img src="https://placehold.co/400x200/6366f1/ffffff?text=Graduation+1" alt="Graduation Ceremony" class="gallery-image" onerror="this.onerror=null; this.src='https://placehold.co/400x200/cccccc/333333?text=Image+Not+Found';">
+                        <!-- REPLACE src WITH YOUR ACTUAL IMAGE URL (e.g., from your GitHub repo): PANI6288 (1).jpg -->
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
+                            <p class="text-white text-lg font-semibold">Graduation Moment</p>
+                        </div>
+                    </div>
+                    <!-- Image 3 -->
+                    <div class="relative group">
+                        <img src="https://placehold.co/400x200/6366f1/ffffff?text=Graduation+2" alt="Receiving Certificate" class="gallery-image" onerror="this.onerror=null; this.src='https://placehold.co/400x200/cccccc/333333?text=Image+Not+Found';">
+                        <!-- REPLACE src WITH YOUR ACTUAL IMAGE URL (e.g., from your GitHub repo): PANI6081.jpg -->
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
+                            <p class="text-white text-lg font-semibold">Certificate Reception</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements, Languages, Strengths -->
+            <section class="card">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h2 class="text-3xl font-bold section-title">Achievements</h2>
+                        <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1 text-lg">
+                            <li>Awarded Gold Medal for academic excellence in B.Tech (2022)</li>
+                            <li>Secured Second Place in Mandal Level Talent Test (SSC, 2016)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold section-title">Languages</h2>
+                        <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1 text-lg">
+                            <li>English: Proficient</li>
+                            <li>Telugu: Native</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold section-title">Strengths</h2>
+                        <ul class="list-disc list-inside text-gray-700 ml-6 space-y-1 text-lg">
+                            <li>Strong Analytical and Problem-Solving Skills</li>
+                            <li>Critical Thinking</li>
+                            <li>Strong Communication Skills</li>
+                            <li>Teamwork and Collaboration</li>
+                            <li>Adaptability and Quick Learning</li>
+                            <li>Attention to Detail and Commitment to Quality</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-600 mt-8 py-6 border-t border-gray-200">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Ganta Kalyan. All rights reserved.</p>
+            <p class="text-sm mt-2">Designed with <span class="text-red-500">&hearts;</span> by AI</p>
+        </footer>
+    </div>
+
+    <!-- Lucide Icons initialization -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script>
+        // Updated function to accept the clicked button element
+        async function generateProjectInsight(clickedButton, projectId) {
+            const button = clickedButton; // Now directly use the passed button element
+            const spinner = document.getElementById(`${projectId}-spinner`);
+            const insightBox = document.getElementById(`${projectId}-insight`);
+            const projectTitle = document.getElementById(`${projectId}-title`).innerText;
+            const projectDescriptionList = document.getElementById(`${projectId}-desc`).children;
+            let projectDescription = "";
+            for (let i = 0; i < projectDescriptionList.length; i++) {
+                projectDescription += projectDescriptionList[i].innerText + " ";
+            }
+
+            button.disabled = true; // Disable button during API call
+            spinner.classList.remove('hidden');
+            insightBox.classList.add('hidden'); // Hide previous insight if any
+            insightBox.innerHTML = ''; // Clear previous insight
+
+            try {
+                const prompt = `Given the following project title and description, generate a concise summary of "Key Learnings & Impact" in bullet points. Focus on what was learned and the measurable or qualitative impact of the project.
+                Title: ${projectTitle}
+                Description: ${projectDescription.trim()}`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // Canvas will automatically provide this
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    insightBox.innerHTML = `<strong>Key Learnings & Impact:</strong><br>${text}`;
+                    insightBox.classList.remove('hidden');
+                } else {
+                    insightBox.innerHTML = `<p class="text-red-600">Error: Could not generate insights. Please try again.</p>`;
+                    insightBox.classList.remove('hidden');
+                    console.error("Gemini API response structure unexpected:", result);
+                }
+            } catch (error) {
+                insightBox.innerHTML = `<p class="text-red-600">Error: Failed to connect to the AI service. (${error.message})</p>`;
+                insightBox.classList.remove('hidden');
+                console.error("Error calling Gemini API:", error);
+            } finally {
+                button.disabled = false; // Re-enable button
+                spinner.classList.add('hidden'); // Hide spinner
+            }
+        }
+    </script>
+</body>
+</html>
